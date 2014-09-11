@@ -61,9 +61,9 @@ public class POSTagger extends AbstractLanguageAnalyser implements ProcessingRes
     // Load the model
     try {
       model = Model.readModel(new BufferedReader(new InputStreamReader(lexiconFileURL.openStream(), "UTF-8")),
-          new BufferedReader(new InputStreamReader(ngramFileURL.openStream(),"UTF-8")));
-      guesserModel = Model.readModel(new BufferedReader(new InputStreamReader(guesserLexiconFileURL.openStream(),"UTF-8")),
-          new BufferedReader(new InputStreamReader(guesserNgramFileURL.openStream(),"UTF-8")));
+          new BufferedReader(new InputStreamReader(ngramFileURL.openStream(), "UTF-8")));
+      guesserModel = Model.readModel(new BufferedReader(new InputStreamReader(guesserLexiconFileURL.openStream(),
+          "UTF-8")), new BufferedReader(new InputStreamReader(guesserNgramFileURL.openStream(), "UTF-8")));
     } catch (IOException e) {
       log.error("Unable to read the POS model!", e);
 

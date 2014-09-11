@@ -68,8 +68,8 @@ public class SearcherTest {
     List<Place> placesFound;
 
     // parameters used in the sample searches
-    String genericQuery = "source:ADHOC";
-    //String genericQuery = "search_only:false";
+    //String genericQuery = "";
+    String genericQuery = "search_only:false";
     String nameQuery = "Kabul";
     Double lat = 34.51667;
     Double lon = 69.18333;
@@ -105,9 +105,9 @@ public class SearcherTest {
     System.out.println("Doing generic query");
     placesFound = s.searchByQueryString(genericQuery);
     System.out.println("Found " + placesFound.size() + " places using query= \"" + genericQuery + "\"");
-    for (Place p : placesFound) {
-      System.out.println("\t" + p + " (" + p.getGeocoord() + ")" );
-    }
+  //  for (Place p : placesFound) {
+   //   System.out.println("\t" + p + " (" + p.getGeocoord() + ")");
+   // }
 
     // make sure all gets written
     System.out.flush();

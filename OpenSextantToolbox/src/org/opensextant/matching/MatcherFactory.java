@@ -24,6 +24,7 @@ import org.apache.solr.common.params.ModifiableSolrParams;
 import org.apache.solr.common.util.DateUtil;
 import org.apache.solr.core.CoreContainer;
 import org.opensextant.placedata.Place;
+import org.opensextant.placedata.PlaceName;
 import org.opensextant.vocab.Vocab;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -721,15 +722,26 @@ public class MatcherFactory {
    */
   protected static Place createPlace(SolrDocument gazEntry) {
 
-    // create the basic Place
-    Place place = new Place(getString(gazEntry, "place_id"), getString(gazEntry, "name"));
+    // create the PlaceName
+    PlaceName name = new PlaceName();
 
+    // add the place name
+    name.setPlaceName(getString(gazEntry, "name"));
     // add the expanded name
-    place.setExpandedPlaceName(getString(gazEntry, "name_expanded"));
-
+    name.setExpandedPlaceName(getString(gazEntry, "name_expanded"));
     // set name type and nameTypeSystem
-    place.setNameType(internString(getString(gazEntry, "name_type")));
-    place.setNameTypeSystem(internString(getString(gazEntry, "name_type_system")));
+    name.setNameType(internString(getString(gazEntry, "name_type")));
+    name.setNameTypeSystem(internString(getString(gazEntry, "name_type_system")));
+    // set the source
+    name.setSource(internString(getString(gazEntry, "source")));
+    // set the name bias
+    name.setNameBias(getDouble(gazEntry, "name_bias"));
+
+    // create the basic Place
+    Place place = new Place();
+
+    // add the PlaceName to the Place
+    place.addPlaceName(name);
 
     // set country coude using the cc (ISO2) value
     place.setCountryCode(internString(getString(gazEntry, "cc")));
@@ -751,7 +763,7 @@ public class MatcherFactory {
     place.setLongitude(xy[1]);
 
     // set the bias values
-    place.setNameBias(getDouble(gazEntry, "name_bias"));
+
     place.setIdBias(getDouble(gazEntry, "id_bias"));
 
     return place;

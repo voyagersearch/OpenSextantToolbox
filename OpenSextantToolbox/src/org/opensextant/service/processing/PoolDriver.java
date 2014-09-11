@@ -29,7 +29,7 @@ public class PoolDriver {
     try {
       prop = new Properties();
       InputStream input = new FileInputStream(args[0]);
-      
+
       // load properties file
       prop.load(input);
     } catch (FileNotFoundException e) {
@@ -42,23 +42,22 @@ public class PoolDriver {
 
     DocumentProcessorPool dpPool = new DocumentProcessorPool(prop);
 
-    File inDir =  new File(args[1]);
+    File inDir = new File(args[1]);
 
-    Collection<File> filesToProcess = FileUtils.listFiles(inDir,
-        FileFilterUtils.trueFileFilter(),
+    Collection<File> filesToProcess = FileUtils.listFiles(inDir, FileFilterUtils.trueFileFilter(),
         FileFilterUtils.trueFileFilter());
 
-   // String content = " They were attacked with baseball bats";
+    // String content = " They were attacked with baseball bats";
 
-    for(File f : filesToProcess){
+    for (File f : filesToProcess) {
       DocumentBean result = dpPool.process("general", f);
       System.out.println(f.getName());
       holdem.add(result);
     }
-    
+
     dpPool.cleanup();
     dpPool = null;
-   // dump(result);
+    // dump(result);
 
   }
 

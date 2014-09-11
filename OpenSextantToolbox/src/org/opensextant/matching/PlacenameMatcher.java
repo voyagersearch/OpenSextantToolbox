@@ -110,19 +110,20 @@ public class PlacenameMatcher {
 
         // don't tag if place name is an abbrev and matchtext is all lower case
         if (!tagAbbrev) {
-          if (place.isAbbreviation() && isLower) {
+          if (place.isAbbreviation(matchText) && isLower) {
             isValid = false;
             log.debug("Not tagging abbreviation:" + matchText);
             break;
           }
         }
 
+        // TODO rework this when tagger provides normalized results
         // don't add places already on candidate
         if (!seenPlaces.contains(place.getPlaceID())) {
           pc.addPlaceWithScore(place, place.getIdBias());
           seenPlaces.add(place.getPlaceID());
           // get max name bias
-          double nBias = place.getNameBias();
+          double nBias = place.getNameBias(matchText);
           if (nBias > nameBias) {
             nameBias = nBias;
           }

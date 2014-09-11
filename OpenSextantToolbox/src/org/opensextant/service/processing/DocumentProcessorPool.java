@@ -31,9 +31,9 @@ import org.opensextant.service.OpenSextantExtractorResource;
 public class DocumentProcessorPool {
 
   private Map<String, BlockingQueue<DocumentProcessor>> poolMap = new HashMap<String, BlockingQueue<DocumentProcessor>>();
-  private  long docsProcessedCount =0L;
-  private  long docsFailedCount =0L;
-  
+  private long docsProcessedCount = 0L;
+  private long docsFailedCount = 0L;
+
   public DocumentProcessorPool(Properties prop) {
 
     String gateHomeString = prop.getProperty("os.service.gate.home");
@@ -250,14 +250,14 @@ public class DocumentProcessorPool {
   /**
    * @return the docsProcessedCount
    */
-  public  long getDocsProcessedCount() {
+  public long getDocsProcessedCount() {
     return docsProcessedCount;
   }
 
   /**
    * @return the docsFailedCount
    */
-  public  long getDocsFailedCount() {
+  public long getDocsFailedCount() {
     return docsFailedCount;
   }
 

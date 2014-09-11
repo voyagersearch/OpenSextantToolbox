@@ -22,6 +22,8 @@
 package org.opensextant.placedata;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A Place represents a named geographic location, a "place". It contains basic information about that place, such as
@@ -31,13 +33,6 @@ import java.io.Serializable;
  */
 public class Place implements Comparable<Object>, Serializable {
   private static final long serialVersionUID = 2389068012345L;
-
-  // Name metadata
-  private String placeName;
-  private String expandedPlaceName; // only present for abbrev/codes
-  private String nameType;
-  private String nameTypeSystem;
-  // private String script;
 
   // The geospatial data
   private String countryCode; // ISO2 code
@@ -56,15 +51,14 @@ public class Place implements Comparable<Object>, Serializable {
   // its location as a point
   private Geocoord geocoord = new Geocoord();
 
-  // identifiers for this name and place
-  private String sourceNameID;
+  private String source;
   private String sourceFeatureID;
   private String placeID;
-  // original source of this data
-  private String source;
 
-  // the a priori estimates
-  private double nameBias;
+  // all the names for this Place
+  private List<PlaceName> placeNames = new ArrayList<PlaceName>();
+
+  // The ID bias is a measure of the a priori likelihood that a mention of this name refers to this particular place.
   private double idBias;
 
   // values used for nameType
@@ -75,21 +69,19 @@ public class Place implements Comparable<Object>, Serializable {
   // construct an empty place
   public Place() {
   }
-
-  // construct a place with just a name and ID
-  public Place(String id, String name) {
-    setPlaceID(id);
-    setPlaceName(name);
-  }
-
+  /*
+   * // construct a place with just a name and ID public Place(String id, String name) { setPlaceID(id);
+   * setPlaceName(name); }
+   */
   @Override
   public String toString() {
     String output = "";
-    if (this.expandedPlaceName != null) {
-      output = this.placeName + " (" + this.expandedPlaceName + ")" + "(" + this.getAdmin1() + "," + this.countryCode
-          + "," + this.featureCode + ")";
+    if (this.placeNames.get(0) != null) {
+      output = this.placeNames.get(0).getPlaceName() + " (" + this.placeNames.get(0).getExpandedPlaceName() + ")" + "("
+          + this.getAdmin1() + "," + this.countryCode + "," + this.featureCode + ")";
     } else {
-      output = this.placeName + " (" + this.getAdmin1() + "," + this.countryCode + "," + this.featureCode + ")";
+      output = this.placeNames.get(0).getPlaceName() + " (" + this.getAdmin1() + "," + this.countryCode + ","
+          + this.featureCode + ")";
     }
 
     return output;
@@ -134,174 +126,227 @@ public class Place implements Comparable<Object>, Serializable {
    * Is this name an abbreviation or code?
    * @return - true if this name is an abbreviation or code
    */
-  public boolean isAbbreviation() {
+  public boolean isAbbreviation(String name) {
 
-    if (this.nameType.equalsIgnoreCase(ABBREV_TYPE)) {
-      return true;
-    }
-
-    if (this.nameType.equalsIgnoreCase(CODE_TYPE)) {
-      return true;
+    for (PlaceName n : this.placeNames) {
+      String typ = n.getNameType();
+      if ((typ.equalsIgnoreCase(ABBREV_TYPE) || typ.equalsIgnoreCase(CODE_TYPE))
+          && n.getPlaceName().equalsIgnoreCase(name)) {
+        return true;
+      }
     }
 
     return false;
   }
 
   // The getters and setters
-  public String getPlaceName() {
-    return placeName;
-  }
 
-  public void setPlaceName(String placeName) {
-    this.placeName = placeName;
+  public String getPlaceName() {
+    return this.placeNames.get(0).getPlaceName();
   }
 
   public String getExpandedPlaceName() {
-    return expandedPlaceName;
+    return this.placeNames.get(0).getExpandedPlaceName();
   }
 
-  public void setExpandedPlaceName(String expandedPlaceName) {
-    this.expandedPlaceName = expandedPlaceName;
+  public String getNameType() {
+    return this.placeNames.get(0).getNameType();
   }
 
+  public String getNameTypeSystem() {
+    return this.placeNames.get(0).getNameTypeSystem();
+  }
+
+  public void addPlaceName(PlaceName name) {
+    this.placeNames.add(name);
+  }
+
+  public List<String> getNames() {
+    List<String> names = new ArrayList<String>();
+    for (PlaceName n : this.getPlaceNames()) {
+      names.add(n.getPlaceName());
+    }
+    return names;
+  }
+
+  public List<String> getNameTypes() {
+    List<String> nameTypes = new ArrayList<String>();
+    for (PlaceName n : this.getPlaceNames()) {
+      nameTypes.add(n.getNameType());
+    }
+    return nameTypes;
+  }
+
+  public Double getNameBias(String name) {
+    Double bias = 0.0;
+    for (PlaceName n : this.getPlaceNames()) {
+      if (n.getPlaceName().equalsIgnoreCase(name)) {
+        bias = n.getNameBias();
+      }
+
+    }
+    return bias;
+  }
+
+  /**
+   * @return the countryCode
+   */
   public String getCountryCode() {
     return countryCode;
   }
-
+  /**
+   * @param countryCode
+   *          the countryCode to set
+   */
   public void setCountryCode(String countryCode) {
     this.countryCode = countryCode;
   }
-
+  /**
+   * @return the admin1
+   */
+  public String getAdmin1() {
+    return admin1;
+  }
+  /**
+   * @param admin1
+   *          the admin1 to set
+   */
+  public void setAdmin1(String admin1) {
+    this.admin1 = admin1;
+  }
+  /**
+   * @return the admin2
+   */
+  public String getAdmin2() {
+    return admin2;
+  }
+  /**
+   * @param admin2
+   *          the admin2 to set
+   */
+  public void setAdmin2(String admin2) {
+    this.admin2 = admin2;
+  }
+  /**
+   * @return the featureClass
+   */
   public String getFeatureClass() {
     return featureClass;
   }
-
+  /**
+   * @param featureClass
+   *          the featureClass to set
+   */
   public void setFeatureClass(String featureClass) {
     this.featureClass = featureClass;
   }
-
+  /**
+   * @return the featureCode
+   */
   public String getFeatureCode() {
     return featureCode;
   }
-
+  /**
+   * @param featureCode
+   *          the featureCode to set
+   */
   public void setFeatureCode(String featureCode) {
     this.featureCode = featureCode;
+  }
+  /**
+   * @return the geocoord
+   */
+  public Geocoord getGeocoord() {
+    return geocoord;
+  }
+  /**
+   * @param geocoord
+   *          the geocoord to set
+   */
+  public void setGeocoord(Geocoord geocoord) {
+    this.geocoord = geocoord;
   }
 
   public Double getLatitude() {
     return this.geocoord.getLatitude();
   }
 
-  public void setLatitude(Double latitude) {
-    this.geocoord.setLatitude(latitude);
-  }
-
   public Double getLongitude() {
     return this.geocoord.getLongitude();
   }
 
-  public void setLongitude(Double longitude) {
-    this.geocoord.setLongitude(longitude);
+  public void setLatitude(Double lat) {
+    this.geocoord.setLatitude(lat);
   }
 
-  public String getSourceNameID() {
-    return sourceNameID;
-  }
-
-  public void setSourceNameID(String uni) {
-    this.sourceNameID = uni;
-  }
-
-  public String getSourceFeatureID() {
-    return sourceFeatureID;
-  }
-
-  public void setSourceFeatureID(String ufi) {
-    this.sourceFeatureID = ufi;
-  }
-
-  public String getPlaceID() {
-    return placeID;
-  }
-
-  public void setPlaceID(String placeID) {
-    this.placeID = placeID;
-  }
-
-  public String getAdmin1() {
-    return admin1;
-  }
-
-  public void setAdmin1(String key) {
-    this.admin1 = key;
-  }
-
-  public String getAdmin2() {
-    return admin2;
-  }
-
-  public void setAdmin2(String key) {
-    this.admin2 = key;
+  public void setLongitude(Double lon) {
+    this.geocoord.setLongitude(lon);
   }
 
   /**
-   * Get the original source of this information.
+   * @return the source
    */
   public String getSource() {
     return source;
   }
-
+  /**
+   * @param source
+   *          the source to set
+   */
   public void setSource(String source) {
     this.source = source;
   }
-
-  public String getNameType() {
-    return nameType;
+  /**
+   * @return the sourceFeatureID
+   */
+  public String getSourceFeatureID() {
+    return sourceFeatureID;
   }
-
-  public void setNameType(String nameType) {
-    this.nameType = nameType;
+  /**
+   * @param sourceFeatureID
+   *          the sourceFeatureID to set
+   */
+  public void setSourceFeatureID(String sourceFeatureID) {
+    this.sourceFeatureID = sourceFeatureID;
   }
-
-  public double getNameBias() {
-    return nameBias;
+  /**
+   * @return the placeID
+   */
+  public String getPlaceID() {
+    return placeID;
   }
-
-  public void setNameBias(double nameBias) {
-    this.nameBias = nameBias;
+  /**
+   * @param placeID
+   *          the placeID to set
+   */
+  public void setPlaceID(String placeID) {
+    this.placeID = placeID;
   }
-
+  /**
+   * @return the placeNames
+   */
+  public List<PlaceName> getPlaceNames() {
+    return placeNames;
+  }
+  /**
+   * @param placeNames
+   *          the placeNames to set
+   */
+  public void setPlaceNames(List<PlaceName> placeNames) {
+    this.placeNames = placeNames;
+  }
+  /**
+   * @return the idBias
+   */
   public double getIdBias() {
     return idBias;
   }
-
+  /**
+   * @param idBias
+   *          the idBias to set
+   */
   public void setIdBias(double idBias) {
     this.idBias = idBias;
-  }
-
-  public Geocoord getGeocoord() {
-    return geocoord;
-  }
-
-  public void setGeocoord(Geocoord geocoord) {
-    this.geocoord = geocoord;
-  }
-
-  /**
-   * The name bias is a measure of the a priori likelihood that a mention of this place's name actually refers to a
-   * place.
-   */
-
-  /**
-   * The ID bias is a measure of the a priori likelihood that a mention of this name refers to this particular place.
-   */
-
-  public String getNameTypeSystem() {
-    return nameTypeSystem;
-  }
-
-  public void setNameTypeSystem(String nameTypeSystem) {
-    this.nameTypeSystem = nameTypeSystem;
   }
 
 }

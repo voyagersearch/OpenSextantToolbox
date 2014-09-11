@@ -1,0 +1,576 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>C:\Users\dlutz\git\OpenSextantToolbox\.README.md.html</title>
+
+
+<style type="text/css">
+body {
+	color: #333;
+	font: 13px/1.4 Helvetica,arial,freesans,clean,sans-serif;
+	font-family: sans-serif;
+}
+
+.markdown-body {
+    border: 1px solid #CACACA;
+    padding: 30px;
+    font-size: 15px;
+    line-height: 1.7;
+    word-wrap: break-word;
+}
+.markdown-body > *:first-child {
+    margin-top: 0 !important;
+}
+.markdown-body > *:last-child {
+    margin-bottom: 0 !important;
+}
+.markdown-body a.absent {
+    color: #C00;
+}
+.markdown-body a.anchor {
+    bottom: 0;
+    cursor: pointer;
+    display: block;
+    left: 0;
+    margin-left: -30px;
+    padding-left: 30px;
+    padding-right: 6px;
+    position: absolute;
+    top: 0;
+}
+.markdown-body a.anchor:focus {
+    outline: medium none;
+}
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4, .markdown-body h5, .markdown-body h6 {
+    cursor: text;
+    font-weight: bold;
+    line-height: 1.7;
+    margin: 1em 0 15px;
+    padding: 0;
+    position: relative;
+}
+
+.markdown-body h1 .octicon-link, .markdown-body h2 .octicon-link, .markdown-body h3 .octicon-link, .markdown-body h4 .octicon-link, .markdown-body h5 .octicon-link, .markdown-body h6 .octicon-link {
+    color: #000;
+    display: none;
+}
+.markdown-body h1:hover a.anchor, .markdown-body h2:hover a.anchor, .markdown-body h3:hover a.anchor, .markdown-body h4:hover a.anchor, .markdown-body h5:hover a.anchor, .markdown-body h6:hover a.anchor {
+    line-height: 1;
+    margin-left: -22px;
+    padding-left: 0;
+    text-decoration: none;
+    top: 15%;
+}
+.markdown-body h1:hover a.anchor .octicon-link, .markdown-body h2:hover a.anchor .octicon-link, .markdown-body h3:hover a.anchor .octicon-link, .markdown-body h4:hover a.anchor .octicon-link, .markdown-body h5:hover a.anchor .octicon-link, .markdown-body h6:hover a.anchor .octicon-link {
+    display: inline-block;
+}
+.markdown-body h1 tt, .markdown-body h1 code, .markdown-body h2 tt, .markdown-body h2 code, .markdown-body h3 tt, .markdown-body h3 code, .markdown-body h4 tt, .markdown-body h4 code, .markdown-body h5 tt, .markdown-body h5 code, .markdown-body h6 tt, .markdown-body h6 code {
+    font-size: inherit;
+}
+.markdown-body h1 {
+    border-bottom: 1px solid #DDD;
+    font-size: 2.5em;
+}
+.markdown-body h2 {
+    border-bottom: 1px solid #EEE;
+    font-size: 2em;
+}
+.markdown-body h3 {
+    font-size: 1.5em;
+}
+.markdown-body h4 {
+    font-size: 1.2em;
+}
+.markdown-body h5 {
+    font-size: 1em;
+}
+.markdown-body h6 {
+    color: #777;
+    font-size: 1em;
+}
+.markdown-body p, .markdown-body blockquote, .markdown-body ul, .markdown-body ol, .markdown-body dl, .markdown-body table, .markdown-body pre {
+    margin: 15px 0;
+}
+.markdown-body hr {
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC") repeat-x;
+    border: 0;
+    color: #CCC;
+    height: 4px;
+    margin: 15px 0;
+    padding: 0;
+}
+.markdown-body ul, .markdown-body ol {
+    padding-left: 30px;
+}
+.markdown-body ul.no-list, .markdown-body ol.no-list {
+    list-style-type: none;
+    padding: 0;
+}
+.markdown-body ul ul, .markdown-body ul ol, .markdown-body ol ol, .markdown-body ol ul {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.markdown-body dl {
+    padding: 0;
+}
+.markdown-body dl dt {
+    font-size: 14px;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 15px;
+    padding: 0;
+}
+.markdown-body dl dd {
+    margin-bottom: 15px;
+    padding: 0 15px;
+}
+.markdown-body blockquote {
+    border-left: 4px solid #DDD;
+    color: #777;
+    padding: 0 15px;
+}
+.markdown-body blockquote > *:first-child {
+    margin-top: 0;
+}
+.markdown-body blockquote > *:last-child {
+    margin-bottom: 0;
+}
+.markdown-body table {
+    display: block;
+    overflow: auto;
+    width: 100%;
+    border-collapse: collapse;
+}
+.markdown-body table th {
+    font-weight: bold;
+}
+.markdown-body table th, .markdown-body table td {
+    border: 1px solid #DDD;
+    padding: 6px 13px;
+}
+.markdown-body table tr {
+    background-color: #FFF;
+    border-top: 1px solid #CCC;
+}
+.markdown-body table tr:nth-child(2n) {
+    background-color: #F8F8F8;
+}
+.markdown-body img {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    max-width: 100%;
+    border: 0px;
+}
+.markdown-body span.frame {
+    display: block;
+    overflow: hidden;
+}
+.markdown-body span.frame > span {
+    border: 1px solid #DDD;
+    display: block;
+    float: left;
+    margin: 13px 0 0;
+    overflow: hidden;
+    padding: 7px;
+    width: auto;
+}
+.markdown-body span.frame span img {
+    display: block;
+    float: left;
+}
+.markdown-body span.frame span span {
+    clear: both;
+    color: #333;
+    display: block;
+    padding: 5px 0 0;
+}
+.markdown-body span.align-center {
+    clear: both;
+    display: block;
+    overflow: hidden;
+}
+.markdown-body span.align-center > span {
+    display: block;
+    margin: 13px auto 0;
+    overflow: hidden;
+    text-align: center;
+}
+.markdown-body span.align-center span img {
+    margin: 0 auto;
+    text-align: center;
+}
+.markdown-body span.align-right {
+    clear: both;
+    display: block;
+    overflow: hidden;
+}
+.markdown-body span.align-right > span {
+    display: block;
+    margin: 13px 0 0;
+    overflow: hidden;
+    text-align: right;
+}
+.markdown-body span.align-right span img {
+    margin: 0;
+    text-align: right;
+}
+.markdown-body span.float-left {
+    display: block;
+    float: left;
+    margin-right: 13px;
+    overflow: hidden;
+}
+.markdown-body span.float-left span {
+    margin: 13px 0 0;
+}
+.markdown-body span.float-right {
+    display: block;
+    float: right;
+    margin-left: 13px;
+    overflow: hidden;
+}
+.markdown-body span.float-right > span {
+    display: block;
+    margin: 13px auto 0;
+    overflow: hidden;
+    text-align: right;
+}
+.markdown-body code, .markdown-body tt {
+    background-color: #F8F8F8;
+    border: 1px solid #DDD;
+    border-radius: 3px;
+    margin: 0 2px;
+    padding: 0 5px;
+}
+.markdown-body code {
+    white-space: nowrap;
+}
+.markdown-body pre > code {
+    border: medium none;
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+}
+.markdown-body .highlight pre, .markdown-body pre {
+    background-color: #F8F8F8;
+    border: 1px solid #DDD;
+    border-radius: 3px;
+    font-size: 13px;
+    line-height: 19px;
+    overflow: auto;
+    padding: 6px 10px;
+}
+.markdown-body pre code, .markdown-body pre tt {
+    border: medium none;
+    margin: 0;
+    padding: 0;
+    word-wrap: normal;
+}
+
+pre, code, tt {
+    font-family: Consolas,"Liberation Mono",Courier,monospace;
+    font-size: 12px;
+}
+
+.highlight {
+    background: #FFF;
+}
+.highlight .k,
+.highlight .o,
+.highlight .cp,
+.highlight .cs,
+.highlight .gs,
+.highlight .gu,
+.highlight .kc,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kt,
+.highlight .nc,
+.highlight .ne,
+.highlight .nf,
+.highlight .ow {
+    font-weight: bold;
+}
+.highlight .gd,
+.highlight .gd .x,
+.highlight .gi,
+.highlight .gi .x,
+.type-csharp .highlight .nf,
+.type-csharp .highlight .nn {
+    color: #000;
+}
+.highlight .c,
+.highlight .cm,
+.highlight .c1 {
+    color: #998;
+    font-style: italic;
+}
+.highlight .err {
+    background-color: #E3D2D2;
+    color: #A61717;
+}
+.highlight .cp,
+.highlight .cs {
+    color: #999;
+}
+.highlight .cs,
+.highlight .ge {
+    font-style: italic;
+}
+.highlight .gd {
+    background-color: #FDD;
+}
+.highlight .gd .x {
+    background-color: #FAA;
+}
+.highlight .gr,
+.highlight .gt {
+    color: #A00;
+}
+.highlight .gh {
+    color: #999;
+}
+.highlight .gi {
+    background-color: #DFD;
+}
+.highlight .gi .x {
+    background-color: #AFA;
+}
+.highlight .go {
+    color: #888;
+}
+.highlight .gp,
+.highlight .nn {
+    color: #555;
+}
+.highlight .gu,
+.highlight .ni {
+    color: #800080;
+}
+.highlight .kt {
+    color: #458;
+}
+.highlight .m {
+    color: #099;
+}
+.highlight .s {
+    color: #D14;
+}
+.highlight .n {
+    color: #333;
+}
+.highlight .na,
+.highlight .no,
+.highlight .nv,
+.highlight .vc,
+.highlight .vg,
+.highlight .vi {
+    color: #008080;
+}
+.highlight .nb {
+    color: #0086B3;
+}
+.highlight .nc {
+    color: #458;
+}
+.highlight .ne,
+.highlight .nf {
+    color: #900;
+}
+.highlight .nt {
+    color: #000080;
+}
+.highlight .w {
+    color: #BBB;
+}
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .mo {
+    color: #099;
+}
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .s2,
+.highlight .se,
+.highlight .sh,
+.highlight .si,
+.highlight .sx,
+.highlight .s1 {
+    color: #D14;
+}
+.highlight .sr {
+    color: #009926;
+}
+.highlight .ss {
+    color: #990073;
+}
+.highlight .bp {
+    color: #999;
+}
+.highlight .il {
+    color: #099;
+}
+.highlight .gc {
+    background-color: #EAF2F5;
+    color: #999;
+}
+.type-csharp .highlight .k,
+.type-csharp .highlight .kt {
+    color: #00F;
+}
+.type-csharp .highlight .nf {
+    font-weight: normal;
+}
+.type-csharp .highlight .nc {
+    color: #2B91AF;
+}
+.type-csharp .highlight .s,
+.type-csharp .highlight .sc {
+    color: #A31515;
+}
+
+</style>
+
+
+<script type="text/javascript">
+
+function getDocumentScrollTop() 
+{
+   var res = document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset || 0;
+   // alert(res);
+   return res;
+}
+
+function setDocumentScrollTop(ypos) 
+{
+	window.scrollTo(0, ypos);
+}
+
+</script>
+
+
+</head>
+<body class="markdown-body">
+<h1> <a name="opensextanttoolbox" class="anchor" href="#opensextanttoolbox" aria-hidden="true"><span class="octicon octicon-link"></span></a>OpenSextantToolbox</h1> 
+<p>A GATE based geotagger</p> 
+<p>Based on the GATE open source text processing framework (<a href="http://gate.ac.uk">http://gate.ac.uk</a>), the OpenSextant Toolbox includes a set of GATE processing resources (plugins) which are assembled together to form a document processing pipeline which extracts geospatial information: geographic coordinates and named places. The OpenSextant Toolbox builds upon other elements of the OpenSextant project such as OpenSextant Gazetteer and SolrTextTagger projects.</p> 
+<h1> <a name="building-opensextant-from-source" class="anchor" href="#building-opensextant-from-source" aria-hidden="true"><span class="octicon octicon-link"></span></a>Building OpenSextant from source</h1> 
+<p>Prerequisites</p> 
+<pre><code>1. Java 7
+2. the Kettle ETL software (see the Gazetter project for details)
+</code></pre> 
+<p>1) Get the two projects from github</p> 
+<pre><code>Gazetteer (https://github.com/OpenSextant/Gazetteer.git)
+OpenSextantToolbox (https://github.com/OpenSextant/OpenSextantToolbox.git)
+
+if using Eclipse, you can &quot;Import existing projects&quot; (the projects include eclipse .project files)
+
+You should end up with four Eclipse projects:
+  &quot;Gazetteer&quot; - contains the processing to clean and transform the publicly available gazetteer data
+  &quot;OpenSextantToolbox Master&quot; - a simple driver for the OpenSextantToolbox and LanguageResources projects
+  &quot;LanguageResources&quot; - all the language data (vocabularies, rules, patterns etc) 
+  &quot;OpenSextantToolbox&quot; - the code for the language processing and entity extraction 
+</code></pre> 
+<p>2) edit config to match environment</p> 
+<pre><code>In the OpenSextantToolbox and LanguageResources and Gazetter projects:
+ copy build.local.properties to build.properties and edit, setting proxy host and port
+ if behind a firewall
+
+Gazetteer
+  see Gazetteer/README.txt for other config details. Basically, get the Kettle software,
+  edit the config files and run ant 
+</code></pre> 
+<p>3) do the builds</p> 
+<pre><code>1) Build the gazetteer 
+   in gazetteer project - do  &quot;ant publish-local&quot;
+
+  This will:
+   a) fetch the gazetter data from the two sources (NGA and USGS)
+   b) run the data through the cleaning and transformation processes
+   c) zip and publish the resulting clean transformed data to local ivy repo
+  This artifact will get pulled from the local ivy repo when you build a release
+  of the whole OpenSextant project (see next step)
+
+NOTE: This step may take 45-90 minutes depending on the machine. It is not necessary to re-process
+the gazetteer data very often since it changes slowly. So unless you want to get the very latest,
+ wish to add your own gazetteer data or have modified the gazetteer processing, once should be enough.
+
+2) Build a release
+   in the LanguageResources project - do &quot;ant publish-local&quot;
+   in the OpenSextantToolbox project - do &quot;ant release&quot;
+
+ NOTE: Since loading the gazetteer data into solr can take a while, for testing/impatience you can use
+ a small version of gazetteer which is much faster to load than the full gazetteer. Change the 
+ value of &quot;csv.gaz&quot; in OpenSextantToolbox's build.xml to point to either the full or small gazetteer. 
+ This small gazetteer contains countries, national capaitals, province/states and some big cities.
+ Although it represents less than 1% of the full gazetteer, it actually produces decent results on
+ generic news-like documents.
+
+
+This will:
+ a) pull all the data together (gazetteer and language resources)
+ b) build all the code
+ c) create and populate a Solr data set with the gazetteer data
+ d) zip it all into a package, ready to deploy
+
+The release package will appear in the base directory of the OpenSextantToolbox project as
+ opensextant-toolbox-&lt;version&gt;-&lt;release-data&gt;.zip
+</code></pre> 
+<p>4) To use OpenSextant</p> 
+<pre><code>The OpenSextant capabilities can be used in three ways:
+1) integrated into your own Java code
+    See the examples in org.opensextant.examples package in
+    OpenSextantToolbox project. There are examples on how to
+    setup and send documents to the geotagger and general purpose
+    entity extractor pipelines. In addition there are examples for
+    some of the major internal components that these processing
+    pipelines use, such as:
+     how to tag documents using the gazetter,
+     how to lookup places names in the gazetteer and
+     how to tag documents with the regular expression matcher component.
+
+2) called as a REST service from your own code
+  To start the REST services, unzip the release package somewhere convenient.
+  Double click &lt;release-dir&gt;/scripts/start.bat (Windows). (Need sh script)
+  This will start the services, using the configuration defined in
+  &lt;release-dir&gt;/etc/service-config.properties.
+  See &lt;release-dir&gt;/scripts/README-service.txt for more details as well
+  as examples on how to call these REST services.
+
+3) used within the GATE Developer design and test tool   
+   The GATE framework (on which much of OpenSextant is built)
+   provides a design and test tool called GATE Developer. This is
+   useful to debug a processing pipeline, to test the results
+   of an extraction against a standard data set or
+   just to see the innards of an extraction process. To use
+   GATE Developer, first downlaod and install the full GATE distro
+   (http://gate.ac.uk/download) (The GATE used in OpenSextant build
+   is the runtime part of GATE and doesn't include GATE Developer and
+   a large number of plugins for all kinds of language processing).
+   Install this somewhere handy. In the OpenSextantToolbox project,
+   make sure you set the value of &quot;gate.home&quot; in the build.properties
+   file to where youjust installed GATE. Then do &quot;ant toolbox-deploy&quot;
+   which will copy the OpenSextant plugin into the GATE distribution.
+   Edit the GATE Developer startup config (&quot;gate.l4j.ini&quot; in the top
+   level of the GATE distro you just installed)to tell GATE both about
+   the extra jars files it needs for OpenSextant and the location of the
+   solr gazeteer contained in the release,by adding the following lines:
+     -Dgate.class.path=&quot;&lt;WHERE.YOU.INSTALLED.GATE\plugins\OpenSextantToolbox\lib_extra\*&quot;
+     -Dsolr.home=&quot;&lt;WHERE.YOU.UNZIPPED.THE.RELEASE&gt;\solr&quot;
+   Having done all of the above, you can open one of the OpenSextant pipelines
+   (called GAPP (GATE Application) files in GATE nomenclature)in GATE Developer
+   via File-&gt;&quot;Restore application from File&quot; and selecting one of the OpenSextant
+   GAPP files located in the &lt;release-dir&gt;/LanguageResources/GAPPs directory.
+   That will load up the GAPP file, exposing all of the configuration and details
+   of that pipeline. Read the GATE documentation to see what you can do from there
+   (run, test modify ...)
+</code></pre>
+</body>
+</html>

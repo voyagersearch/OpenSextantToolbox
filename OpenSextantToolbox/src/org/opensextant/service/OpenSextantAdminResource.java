@@ -65,12 +65,12 @@ public class OpenSextantAdminResource extends ServerResource {
       DocumentProcessorPool dpPool = ((OpenSextantApplication) this.getApplication()).getPool();
       Map<String, Integer> avail = dpPool.available();
 
-      long failCount  = dpPool.getDocsFailedCount();
+      long failCount = dpPool.getDocsFailedCount();
       long procCount = dpPool.getDocsProcessedCount();
 
       String stat = "green";
 
-      if(avail.size() == 0){
+      if (avail.size() == 0) {
         stat = "red";
       }
 
