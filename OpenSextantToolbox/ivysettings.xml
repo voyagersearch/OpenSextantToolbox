@@ -2,6 +2,7 @@
 	<settings defaultResolver="External" overwriteMode="newer" />
 	<!--  location for Restlet stuff -->
 	<property name="restlet-repo" value="http://maven.restlet.org" />
+	<property name="voyager-repo" value="http://s3.amazonaws.com/voyager.maven" />
 	<!-- location of nexus snapshots repo -->
 	<!--property name="nexus-snapshots" value="https://oss.sonatype.org/content/repositories/snapshots" /-->
 
@@ -11,6 +12,7 @@
 
 	<resolvers>
 		<chain name="External" dual="false">
+			<ibiblio name="voyager" m2compatible="true" root="${voyager-repo}" />	
 			<ibiblio name="restlet" m2compatible="true" root="${restlet-repo}" />	
 			<ibiblio name="maven2" m2compatible="true" />
 			<!--ibiblio name="nexus" m2compatible="true" root="${nexus-snapshots}" /-->
