@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrRequest;
 import org.apache.solr.client.solrj.SolrServer;
 import org.apache.solr.client.solrj.SolrServerException;
@@ -20,7 +21,7 @@ import org.slf4j.LoggerFactory;
 
 public class VocabMatcher {
 
-  private SolrServer solrServer;
+  private SolrClient solrServer;
   private ModifiableSolrParams matchParams;
 
   private SolrTaggerRequest tagRequest = null;
@@ -29,7 +30,7 @@ public class VocabMatcher {
   // Log object
   private static Logger log = LoggerFactory.getLogger(VocabMatcher.class);
 
-  protected VocabMatcher(SolrServer svr, ModifiableSolrParams prms) {
+  protected VocabMatcher(SolrClient svr, ModifiableSolrParams prms) {
     this.solrServer = svr;
     matchParams = new ModifiableSolrParams(prms);
   }

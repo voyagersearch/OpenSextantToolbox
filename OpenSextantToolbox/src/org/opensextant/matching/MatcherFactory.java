@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-import org.apache.solr.client.solrj.SolrServer;
+import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.embedded.EmbeddedSolrServer;
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
@@ -47,8 +47,8 @@ public class MatcherFactory {
   private static boolean isStarted = false;
 
   // the solr servers which are the heart of the MatcherFactory
-  private static SolrServer solrServerGeo = null;
-  private static SolrServer solrServerVocab = null;
+  private static SolrClient solrServerGeo = null;
+  private static SolrClient solrServerVocab = null;
 
   // all of the Matchers,Searchers and VocabMatchers the Factory has created
   // weak references so they can be GC'ed
@@ -595,11 +595,11 @@ public class MatcherFactory {
     return vocabFieldNames;
   }
 
-  protected static SolrServer getSolrServerGeo() {
+  protected static SolrClient getSolrServerGeo() {
     return solrServerGeo;
   }
 
-  protected static SolrServer getSolrServerVocab() {
+  protected static SolrClient getSolrServerVocab() {
     return solrServerVocab;
   }
 

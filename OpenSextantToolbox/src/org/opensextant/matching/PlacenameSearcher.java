@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrServer;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.QueryResponse;
@@ -18,13 +19,13 @@ import org.slf4j.LoggerFactory;
 
 public class PlacenameSearcher {
 
-  private SolrServer solrServer;
+  private SolrClient solrServer;
   private ModifiableSolrParams baseSearchParams = new ModifiableSolrParams();
 
   // Log object
   private static Logger log = LoggerFactory.getLogger(PlacenameSearcher.class);
 
-  protected PlacenameSearcher(SolrServer svr, ModifiableSolrParams prms) {
+  protected PlacenameSearcher(SolrClient svr, ModifiableSolrParams prms) {
     solrServer = svr;
     baseSearchParams = new ModifiableSolrParams(prms);
   }

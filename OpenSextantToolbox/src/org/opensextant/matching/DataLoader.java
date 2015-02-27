@@ -29,7 +29,7 @@ import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.LineIterator;
-import org.apache.solr.client.solrj.SolrServer;
+import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.request.ContentStreamUpdateRequest;
 import org.apache.solr.client.solrj.response.SolrResponseBase;
 import org.apache.solr.common.params.ModifiableSolrParams;
@@ -76,7 +76,7 @@ public class DataLoader {
     }
 
     // get a SolrServer with the proper core
-    SolrServer solrServer = getSolrServer(scheme, solrhome);
+    SolrClient solrServer = getSolrServer(scheme, solrhome);
 
     // convert indexed content to flat list
     // currently creates a temp file, could stream?
@@ -232,12 +232,12 @@ public class DataLoader {
     out.close();
   }
 
-  private static SolrServer getSolrServer(String scheme, String solrhome) {
+  private static SolrClient getSolrServer(String scheme, String solrhome) {
 
     MatcherFactory.config(solrhome);
     MatcherFactory.start();
 
-    SolrServer svr = null;
+    SolrClient svr = null;
 
     if (scheme.equalsIgnoreCase("gazetteer")) {
       svr = MatcherFactory.getSolrServerGeo();

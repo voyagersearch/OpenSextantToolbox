@@ -8,8 +8,8 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrRequest;
-import org.apache.solr.client.solrj.SolrServer;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
 
 public class PlacenameMatcher {
 
-  private SolrServer solrServer;
+  private SolrClient solrServer;
   private ModifiableSolrParams matchParams;
 
   private static final String APRIORI_NAME_RULE = "AprioriNameBias";
@@ -34,7 +34,7 @@ public class PlacenameMatcher {
   // Log object
   private static Logger log = LoggerFactory.getLogger(PlacenameMatcher.class);
 
-  protected PlacenameMatcher(SolrServer svr, ModifiableSolrParams prms) {
+  protected PlacenameMatcher(SolrClient svr, ModifiableSolrParams prms) {
     this.solrServer = svr;
     matchParams = new ModifiableSolrParams(prms);
   }
