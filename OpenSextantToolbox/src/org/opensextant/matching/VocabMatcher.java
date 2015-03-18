@@ -1,5 +1,6 @@
 package org.opensextant.matching;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -46,7 +47,7 @@ public class VocabMatcher {
 
     try {
       response = tagRequest.process(solrServer);
-    } catch (SolrServerException e) {
+    } catch (SolrServerException | IOException e) {
       log.error("Got exception when attempting to match " + docName, e);
       return matches;
     }

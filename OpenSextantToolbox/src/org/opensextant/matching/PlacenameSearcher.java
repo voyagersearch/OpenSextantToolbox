@@ -1,5 +1,6 @@
 package org.opensextant.matching;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -37,7 +38,7 @@ public class PlacenameSearcher {
     QueryResponse response = null;
     try {
       response = solrServer.query(prms);
-    } catch (SolrServerException e) {
+    } catch (SolrServerException | IOException e) {
       log.error("Got exception when processing query.", e);
       return places;
     }
@@ -62,7 +63,7 @@ public class PlacenameSearcher {
     QueryResponse response = null;
     try {
       response = solrServer.query(srchParams);
-    } catch (SolrServerException e) {
+    } catch (SolrServerException | IOException e) {
       log.error("Got exception when processing query.", e);
       return null;
     }
@@ -119,7 +120,7 @@ public class PlacenameSearcher {
     QueryResponse response = null;
     try {
       response = solrServer.query(srchParams);
-    } catch (SolrServerException e) {
+    } catch (SolrServerException | IOException e) {
       log.error("Got exception when processing query.", e);
       return places;
     }
