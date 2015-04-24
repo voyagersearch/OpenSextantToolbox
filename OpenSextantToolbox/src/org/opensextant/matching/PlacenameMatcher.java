@@ -40,6 +40,14 @@ public class PlacenameMatcher {
     matchParams = new ModifiableSolrParams(prms);
   }
 
+  /**
+   * Adds additional parameters to the current match parameters.
+   * Patch by Justin, need to submit this upstream.
+   */
+  public ModifiableSolrParams getMatchParams() {
+    return matchParams;
+  }
+
   public void tagAbbreviations(boolean b) {
     tagAbbrev = b;
   }
