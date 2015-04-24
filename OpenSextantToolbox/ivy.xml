@@ -36,7 +36,7 @@
 
 		<!-- Get the Solr Text Tagger, which brings along the rest of Solr -->
 		<dependency org="org.opensextant" name="solr-text-tagger"
-			rev="2.1-VG3" conf="Standalone->*">
+			rev="2.1-VG5" conf="Standalone->*">
 			<!-- exclude logging stuff -->
 			<exclude name="logback-core" />
 			<exclude name="logback-classic" />
